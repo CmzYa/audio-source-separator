@@ -1,0 +1,28 @@
+# 打包用依赖 - 使用 CPU 版 PyTorch
+# 运行时自动检测 CUDA，有则用 GPU，无则用 CPU
+
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# Web 框架
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+websockets==14.1
+
+# 音频处理
+soundfile==0.13.0
+numpy==2.2.1
+
+# Demucs 音频分离
+demucs==4.0.1
+
+# PyTorch CPU 版本 (体积更小，运行时自动检测 CUDA)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+torchaudio==2.5.1+cpu
+
+# 文件操作
+aiofiles==24.1.0
+
+# 打包工具
+pyinstaller==6.11.1

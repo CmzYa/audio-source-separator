@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+/* 深色主题变量（默认） */
+:root,
+:root.dark {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0d0d12;
+  --bg-glass: rgba(18, 18, 26, 0.7);
+  --bg-glass-light: rgba(18, 18, 26, 0.5);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-light: rgba(255, 255, 255, 0.04);
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #6366f1;
+  --accent-glow: rgba(139, 92, 246, 0.4);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-active: rgba(255, 255, 255, 0.08);
+}
+
+/* 浅色主题变量 */
+:root.light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-glass-light: rgba(255, 255, 255, 0.6);
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --border-glass-light: rgba(0, 0, 0, 0.04);
+  --accent-primary: #7c3aed;
+  --accent-secondary: #4f46e5;
+  --accent-glow: rgba(139, 92, 246, 0.3);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --surface-hover: rgba(0, 0, 0, 0.03);
+  --surface-active: rgba(0, 0, 0, 0.05);
+}
+
+/* 全局背景 */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 毛玻璃基础类 */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+}
+
+.glass-light {
+  background: var(--bg-glass-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-glass-light);
+}
+
+/* 悬浮卡片 */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+:root.dark .glass-card {
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
+  border-color: var(--border-glass);
+}
+
+/* 主按钮样式 */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 8px 24px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 次级按钮 */
+.btn-secondary {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-glass);
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--surface-active);
+}
+
+/* 进度条轨道 */
+.progress-track {
+  background: var(--surface-hover);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* 进度条填充 */
+.progress-fill {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 0 12px var(--accent-glow);
+  border-radius: 6px;
+}
+
+/* 音轨行 */
+.track-row {
+  background: var(--surface-hover);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass-light);
+  transition: all 0.15s ease;
+}
+
+.track-row:hover {
+  background: var(--surface-active);
+  border-color: var(--border-glass);
+}
+
+.track-row.muted {
+  opacity: 0.5;
+}
+
+/* 控制按钮 */
+.control-btn {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-glass-light);
+  transition: all 0.15s ease;
+}
+
+.control-btn:hover:not(:disabled) {
+  background: var(--surface-active);
+}
+
+.control-btn.active {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.control-btn.muted {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* 播放按钮 */
+.play-btn {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: all 0.2s ease;
+}
+
+.play-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 28px var(--accent-glow);
+  transform: scale(1.05);
+}
+
+/* 进度指示线 */
+.progress-line {
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* 上传区域 */
+.upload-zone {
+  background: var(--surface-hover);
+  border: 2px dashed var(--border-glass);
+  transition: all 0.2s ease;
+}
+
+.upload-zone:hover {
+  background: var(--surface-active);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.upload-zone.has-file {
+  border-style: solid;
+  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* 选择器 */
+.selector {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-glass);
+  transition: all 0.15s ease;
+}
+
+.selector:hover {
+  border-color: var(--border-glass);
+}
+
+.selector:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* 加载动画 */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 消息提示 */
+.message-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.message-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* 频谱容器 */
+.waveform-container {
+  background: var(--surface-hover);
+  border-radius: 4px;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-glass);
+}
+
+/* 侧栏样式 */
+.sidebar-bg {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-glass-light);
+}
+
+.sidebar-task-active {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 浅色主题特殊调整 */
+:root.light .glass-card {
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+:root.light .track-row {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:root.light .track-row:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.light .sidebar-bg {
+  background: var(--bg-secondary);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
